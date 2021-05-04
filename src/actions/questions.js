@@ -19,11 +19,14 @@ export function addQuestion(question){
 }
 
 export function handleAddQuestion(question){
-   return (dispatch)=>{
+   return (dispatch, getState)=>{
        //Todo
     //    show loading
+    const {authedUser} = getState()
+    
+    console.log('auth:',authedUser)
     console.log('save ques',question)
-       return saveQuestion(question)
+       return saveQuestion({...question, author:authedUser})
        .then((question)=>{
            //TODO stop loading
            dispatch(addQuestion(question))

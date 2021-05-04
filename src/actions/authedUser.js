@@ -9,10 +9,9 @@ export function login(id){
     }
 }
 
-export function logout(id){
+export function logout(){
     return {
-        type: USER_LOGOUT,
-        id, 
+        type: USER_LOGOUT
     }
 }
 
