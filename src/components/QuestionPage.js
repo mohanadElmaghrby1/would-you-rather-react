@@ -7,10 +7,17 @@ import { connect } from 'react-redux';
 class QuestionPage extends Component {
 
     render() {
-        const { answerdQuestions,match } = this.props
+        const { answerdQuestions,match,questions } = this.props
         const id = match.params.id;
         console.log('ans', answerdQuestions)
         const isQuestionAnswerd = answerdQuestions[id];
+        
+        if (!questions[id]){
+            return (
+                <h1>Error 404 Question not found!</h1>
+            )
+        }
+
         return (
             <Fragment>
                 <h2 className="text-center my-3">
@@ -26,9 +33,10 @@ class QuestionPage extends Component {
 
 }
 
-function mapStateToProps({ authedUser, users }, { id }) {
+function mapStateToProps({ authedUser, users , questions}, { id }) {
     return {
         answerdQuestions: users[authedUser].answers,
+        questions
     }
 }
 
