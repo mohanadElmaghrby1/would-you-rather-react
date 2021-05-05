@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
 import { handleInitialData } from '../actions/shared'
-import { handleAddQuestion, handleAnswerQuestion } from '../actions/questions'
 import Login from './Login'
 import { connect } from 'react-redux';
 import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom'
-import { login } from '../actions/authedUser'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './Nav'
 import {Container} from 'react-bootstrap'
 import Home from './Home'
+import QuestionPage from './QuestionPage'
+import { LoadingBar } from 'react-redux-loading-bar';
 
 class App extends Component {
   componentDidMount() {
@@ -37,10 +35,13 @@ class App extends Component {
     return (
       <Router>
         <Container>
+        <LoadingBar/>
           <Nav />
           <main>
             <Switch>
               <Route path="/" exact component={Home} />
+							<Route path="/questions/:id" component={QuestionPage} />
+
               {/* <Route path="/questions/:id" component={QuestionPage} />
 							<Route path="/add" component={NewQuestion} />
 							<Route path="/leaderboard" component={LeaderBoard} />

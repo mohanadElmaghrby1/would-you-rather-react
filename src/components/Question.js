@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Button, Row, Image } from 'react-bootstrap';
-import {formatDate} from '../utils/helpers'
+import { formatDate } from '../utils/helpers'
+import { Link } from 'react-router-dom';
 
 const Question = ({ question, author }) => {
     return (
@@ -20,7 +21,9 @@ const Question = ({ question, author }) => {
                 </Card.Header>
                 <Card.Body className="text-center">
                     <Card.Text>{question.optionOne.text}...?</Card.Text>
-                    <Button variant="outline-secondary">View Question</Button>
+                    <Link to={`/questions/${question.id}`}>
+                        <Button variant="outline-secondary">View Question</Button>
+                    </Link>
                 </Card.Body>
                 <Card.Footer className="text-muted">{formatDate(question.timestamp)}</Card.Footer>
             </Card>

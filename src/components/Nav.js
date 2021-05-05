@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Image, Col } from 'react-bootstrap';
+import { Navbar, Nav, Button, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authedUser';
+import { NavLink } from 'react-router-dom';
+
 
 class Login extends Component {
 
@@ -19,7 +21,9 @@ class Login extends Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
 
-                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link as={NavLink} to="/" exact>
+                                Home
+						</Nav.Link>
                             <Nav.Link href="#new">New Question</Nav.Link>
                             <Nav.Link href="#link">Leaderboard</Nav.Link>
                         </Nav>
