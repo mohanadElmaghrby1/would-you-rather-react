@@ -4,10 +4,14 @@ import { formatDate } from '../utils/helpers'
 import { connect } from 'react-redux';
 
 const AnswerdQuestion = ({ question, authedUser, author }) => {
-    console.log('question', question)
+    console.log('qqq', question)
+    console.log('autheduser', authedUser)
     const optionOneNumberOfAnswers = question.optionOne.votes.length
     const optionTwoNumberOfAnswers = question.optionTwo.votes.length
     const totalNumberOfAnswers = optionOneNumberOfAnswers + optionTwoNumberOfAnswers
+    const choosedOptionOne = question.optionOne.votes.includes(authedUser);
+    console.log('choosedOptionOne', question.optionOne.votes.includes(authedUser))
+
 
     return (
         <Row className='justify-content-center mt-4'>
@@ -28,6 +32,8 @@ const AnswerdQuestion = ({ question, authedUser, author }) => {
                     <ul>
                         <li className='m-4'>
                             <span>{question.optionOne.text}</span>
+                            {choosedOptionOne && <span className="text-success ml-2">You choosed this</span>}
+
                             <ProgressBar now={optionOneNumberOfAnswers / totalNumberOfAnswers * 100} label={`${parseInt(optionOneNumberOfAnswers / totalNumberOfAnswers * 100)}%`} />
                             <Card.Text className="text-muted">
                                 chosen by {optionOneNumberOfAnswers} out of {totalNumberOfAnswers} users
@@ -35,6 +41,8 @@ const AnswerdQuestion = ({ question, authedUser, author }) => {
                         </li>
                         <li className='m-4'>
                             <span>{question.optionTwo.text}</span>
+                            {!choosedOptionOne && <span className="text-success ml-2">You choosed this</span>}
+
                             <ProgressBar now={optionTwoNumberOfAnswers / totalNumberOfAnswers * 100} label={`${parseInt(optionTwoNumberOfAnswers / totalNumberOfAnswers * 100)}%`} />
                             <Card.Text className="text-muted">
                                 chosen by {optionTwoNumberOfAnswers} out of {totalNumberOfAnswers} users

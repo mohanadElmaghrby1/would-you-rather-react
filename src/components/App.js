@@ -1,27 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
 import { connect } from 'react-redux';
-import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Nav from './Nav'
-import {Container} from 'react-bootstrap'
 import Home from './Home'
 import QuestionPage from './QuestionPage'
-import { LoadingBar } from 'react-redux-loading-bar';
+import NewQuestion from './NewQuestion';
+import LoadingBar from 'react-redux-loading'
+import Leaderboard from './Leaderboard';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
-    // this.props.dispatch(login('sarahedo'))
-
-    let q = {
-      optionOneText: 'tmatm',
-      optionTwoText: '5iar'
-    };
-    // this.props.dispatch(handleAddQuestion(q));
-
-
-    // this.props.dispatch(handleAnswerQuestion('vthrdm985a262al8qx3do', 'optionTwo'))
   }
 
   render() {
@@ -33,23 +24,20 @@ class App extends Component {
     }
 
     return (
-      <Router>
-        <Container>
-        <LoadingBar/>
+      <Fragment>
+        <LoadingBar />
+        <div className='container'>
           <Nav />
-          <main>
-            <Switch>
+          {this.props.loading === true
+            ? null
+            : <div>
               <Route path="/" exact component={Home} />
-							<Route path="/questions/:id" component={QuestionPage} />
-
-              {/* <Route path="/questions/:id" component={QuestionPage} />
-							<Route path="/add" component={NewQuestion} />
-							<Route path="/leaderboard" component={LeaderBoard} />
-							<Route component={PageNotFound} /> */}
-            </Switch>
-          </main>
-        </Container>
-      </Router>
+              <Route path="/questions/:id" component={QuestionPage} />
+              <Route path="/add" component={NewQuestion} />
+              <Route path="/leaderboard" component={Leaderboard} />
+            </div>}
+        </div>
+      </Fragment>
     );
   }
 }

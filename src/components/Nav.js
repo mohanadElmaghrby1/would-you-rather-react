@@ -24,8 +24,8 @@ class Login extends Component {
                             <Nav.Link as={NavLink} to="/" exact>
                                 Home
 						</Nav.Link>
-                            <Nav.Link href="#new">New Question</Nav.Link>
-                            <Nav.Link href="#link">Leaderboard</Nav.Link>
+                            <Nav.Link as={NavLink} to="/add">New Question</Nav.Link>
+                            <Nav.Link as={NavLink} to="/leaderboard">Leaderboard</Nav.Link>
                         </Nav>
                         <Navbar.Toggle />
                         <Navbar.Collapse className="justify-content-end">
