@@ -13,7 +13,7 @@ class Login extends Component {
         const { authedUser } = this.props;
         return (
             <Fragment>
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="light" expand="lg" className='mt-2'>
                     <Navbar.Brand href="#home">Would You Rather?</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

@@ -15,3 +15,7 @@ code {
 .center {
   text-align: center;
 }
+ul {
+	list-style-type: circle;
+	padding-inline-start: 0rem;
+}
